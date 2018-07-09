@@ -21,24 +21,48 @@ devtool: "source-map",
 module: { //所有第三方模块再次配置
     rules: [
         {test: /\.(js|jsx)$/, use: 'babel-loader', exclude:/node_modules/}, //一定要加exclude
-        {test: /\.css$/, use: ['style-loader', 'css-loader']},  //?modules&localIdentName=[path][name]-[local][hash:5]']},
+        {test: /\.css$/, use: [
+            {
+                loader:'style-loader'
+            }, {
+                loader: 'css-loader'
+            },{
+                loader: 'px2rem-loader',
+                options: {
+                    remUni: 75,
+                    remPrecision: 4
+                }
+            }   
+            ]
+        }, //?modules&localIdentName=[path][name]-[local][hash:5]']},
         {test: /\.(jpg|png|gif|bmp)$/, use:'url-loader'},
         {test: /\.(ttf|woff|woff2|eot|svg)$/, use:['url-loader','file-loader']},
         // {test: /\.scss$/, use:['style-loader','css-loader','sass-loader']}
         {
             test: /\.scss$/,
+            // exclude:/node_modules/,
             use: [
                 {loader:"style-loader"}, // creates style nodes from JS strings
-                {loader:"css-loader",
-                options: {
-                    sourceMap: true
+                {
+                    loader:"css-loader",
+                     options: {
+                         sourceMap: true
+                    }
+                }, // translates CSS into CommonJS
+                {
+                    loader:"sass-loader",
+                    options: {
+                        sourceMap: true
                 }
-            }, // translates CSS into CommonJS
-                {loader:"sass-loader",
-                options: {
-                    sourceMap: true
-                }
-            } // compiles Sass to CSS
+            },
+                // {
+                //     loader: 'px2rem-loader',
+                //     options: {
+                //         remUni: 75,
+                //         remPrecision: 4
+                //     }
+                // }
+             // compiles Sass to CSS
             ]
         }
     ]
