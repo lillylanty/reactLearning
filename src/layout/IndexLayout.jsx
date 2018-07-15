@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header.jsx';
-// import * as data from '@/../mock/mockMenu';
+import Sider from './Sider.jsx';
+import menus from '@/../mock/mockMenu';
 import './indexlayout.scss';
 
 class IndexLayout extends Component {
@@ -10,16 +11,27 @@ class IndexLayout extends Component {
     }
     
     render() {
-        var data = []
-        console.log('mock data',data)
+        console.log('menus',menus)
+        var headers = [];var siders = [];
+        menus.map(a=>{
+            // if(a.name !== '用户中心'){
+                headers.push({
+                    name:a.name,
+                    href:a.href
+                })
+            // }
+            if(a.children && a.children.length>0){
+                siders = siders.concat(a.children)
+            }
+        })
         return (
-            <div>
+            <div className="mainbody">
                 <header className="header">
-                    <Header menuData={data} />
+                    <Header menuData={headers} />
                 </header>
-                <nav  className="nav"></nav>
+                {/* <nav  className="nav"></nav> */}
                 <content  className="content">
-                    <aside></aside>
+                    <aside><Sider data={siders}/></aside>
                     <section></section>
                 </content>
                 <footer  className="footer"></footer>

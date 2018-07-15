@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 //不做单独的配置的话不能省略.jsx后缀名
-// import AppTest from './test/app'
-import AppTest from '@/test/app'
-import AppTest1 from '@/test/app.1'
-import IndexLayout from '@/layout/IndexLayout'
+import App from './index'
+// import AppTest from '@/test/app'
+// import AppTest1 from '@/test/app.1'
+// import IndexLayout from '@/layout/IndexLayout'
 // import cssObj from '@/test/app.scss'
 // import css2 from '@/test/app.css'
 // console.log(cssObj,css2);
@@ -15,6 +15,6 @@ import IndexLayout from '@/layout/IndexLayout'
 // const myH1 = <h1>babel转换成create后的h1</h1>
 // const myDiv = React.createElement('div',{id:'mainid'},'这是一个来自main创建的虚拟dom渲染的元素',myH1);
 // const divs = AppTest()
-const myDiv = <div><IndexLayout/></div>;  //<AppTest /><hr/><AppTest1/>
+// const myDiv = <div><IndexLayout/></div>;  //<AppTest /><hr/><AppTest1/>
 
-ReactDom.render(myDiv,document.getElementById('app'))
+ReactDom.render(<App/>,document.getElementById('app'))

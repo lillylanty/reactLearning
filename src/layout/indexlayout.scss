@@ -2,21 +2,77 @@ body{
     width:100%;
     height:100%;
 }
+.mainbody{
+    width: 100%;
+    height:100%;
+    background:#0a0a1d;
+    color:#f2f2f2;
+    font-size: 16px;
+    // font-size: 16rem;
+    position: relative;
+}
 .header,.nav,.content,.footer{
     width:100%;
     text-align:center;
+    position: absolute;
+    overflow: hidden;
 }
 .header{
+    height: 50px;
+    line-height: 50px;
     min-height:40px;
-    background-color:#feddcf;
+    color:#f1f1f1;
+    a{ color: #f1f1f1 ;}
+      >div{
+          display: flex;
+          justify-content: space-between;
+          height: 50px;
+        line-height: 50px;
+          .logo{
+              flex-basis: 5%;
+          }
+          >div:first-child{
+              display: inline-flex;
+              flex-basis: 65%;
+          }
+      }
 }
-.nav{
-    min-height: 80px;
-}
+// .nav{
+//     min-height: 80px;
+// }
 .content{
     min-height:500px;
+    top: 50px;
+    left: 0;
+    aside{
+        float: left;
+        // left:0;
+        height:100%;
+        min-height: 700px;
+        width: 18%;
+        max-width: 200px;
+        overflow: hidden;
+        overflow-y: scroll;
+        box-sizing: border-box;
+        background: #f2f2ff;
+    }
+    section{
+        float: left;
+        // left: 20%;
+        height: 100%;
+        min-height:800px;
+        margin-left: 2%;
+        width: 87%;
+        // overflow-y: scroll;
+        box-sizing: border-box;
+        background: #eee;
+    }
 }
 .footer{
-    min-height:40px;
-     background-color:#feddcf;
+    position: fixed;
+    bottom:0;
+     min-height:40px;
+}
+.header , .footer{
+    background-color:#344a5f; 
 }
